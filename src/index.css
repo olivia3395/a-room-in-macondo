@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+}
+
+@layer utilities {
+  .bg-mysterious {
+    background-color: #0f0500; /* Deep fiery dark, not pure black */
+    /* Paper grain texture + noise */
+    background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+    background-blend-mode: overlay;
+  }
+
+  /* Fire background utility */
+  .fire-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://lexipol.brightspotcdn.com/dims4/default/11c5644/2147483647/strip/false/crop/1200x1057+0+0/resize/1200x1057!/quality/90/?url=https%3A%2F%2Fk1-prod-lexipol.s3.us-east-2.amazonaws.com%2Fbrightspot%2F8d%2F3c%2Fd2786777f1496d859205af18d88f%2Ffire030220.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+  }
+  
+  /* Atmospheric shadow overlay (subtle light) */
+  .shadow-overlay {
+    position: relative;
+  }
+  .shadow-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    opacity: 0.5;
+  }
+
+  /* Plant shadow utility */
+  .plant-shadow {
+    position: absolute;
+    bottom: -5%;
+    right: -5%;
+    width: 40%;
+    height: auto;
+    opacity: 0.03;
+    filter: blur(12px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Butterfly background utility */
+  .butterfly-bg {
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    width: 35%;
+    aspect-ratio: 1;
+    background-image: url('https://pic.616pic.com/ys_img/01/00/86/YOh7Cr7a1A.jpg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    mix-blend-mode: luminosity;
+    mask-image: radial-gradient(circle at center, black 30%, transparent 65%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-15deg);
+  }
+
+  /* Rainforest background utility */
+  .rainforest-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://www.natureandculture.org/wp-content/uploads/2023/06/WRD-blog-Monthly-Giving-Header-3-1024x576.png');
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.15;
+    mix-blend-mode: luminosity;
+    filter: sepia(0.8) hue-rotate(-20deg) brightness(0.6);
+    mask-image: linear-gradient(to top, black 0%, transparent 70%);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Old book background utility */
+  .book-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://static.vecteezy.com/system/resources/previews/059/619/210/non_2x/vintage-open-book-with-aged-pages-and-weathered-texture-for-background-design-png.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.3;
+    mix-blend-mode: luminosity;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Grid shadow background utility */
+  .grid-shadow-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: auto;
+    opacity: 0.02;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .archive-label {
+    @apply text-[10px] font-sans uppercase tracking-[0.25em] opacity-50 border-l border-[#d4af37]/30 pl-3 text-[#d4af37];
+  }
+  
+  .drop-cap::first-letter {
+    @apply text-7xl font-serif italic mr-4 float-left leading-[0.8] text-[#d4af37]/80;
+  }
+}
