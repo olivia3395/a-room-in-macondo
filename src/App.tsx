@@ -15,7 +15,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [intakeData, setIntakeData] = useState<{haunting: string, weather: string, tone: string, logic: string} | null>(null);
-  const [language, setLanguage] = useState<"en" | "zh">("zh");
+  const [language, setLanguage] = useState<"en" | "zh">("en");
 
   const handleGenerate = async (haunting: string, weather: string, tone: string, logic: string) => {
     setLoading(true);

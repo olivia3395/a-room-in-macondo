@@ -37,6 +37,18 @@ export default function Result({ fate, onRegenerate, language }: ResultProps) {
       animate={{ opacity: 1 }}
       className="min-h-screen p-6 md:p-12 bg-mysterious shadow-overlay text-[#d4af37] font-serif relative overflow-hidden"
     >
+      {/* Language Toggle & Back Button */}
+      <div className="absolute top-6 left-6 right-6 z-20 flex justify-between">
+        <button onClick={onRegenerate} className="font-sans text-sm tracking-widest opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
+          {language === "en" ? "← Back" : "← 返回"}
+        </button>
+        <button 
+          onClick={() => {}} // Language toggle handled by parent or state
+          className="font-sans text-sm tracking-widest opacity-70 hover:opacity-100 transition-opacity cursor-pointer"
+        >
+          {language === "en" ? "中文" : "English"}
+        </button>
+      </div>
       {/* Fire Background */}
       <div className="fire-bg" />
       {/* Rainforest Background */}
