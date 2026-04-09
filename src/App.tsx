@@ -13,11 +13,13 @@ export default function App() {
   const [step, setStep] = useState<"landing" | "intake" | "result">("landing");
   const [fate, setFate] = useState<LiteraryFate | null>(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [intakeData, setIntakeData] = useState<{haunting: string, weather: string, tone: string, logic: string} | null>(null);
   const [language, setLanguage] = useState<"en" | "zh">("zh");
 
   const handleGenerate = async (haunting: string, weather: string, tone: string, logic: string) => {
     setLoading(true);
+    setError(null);
     setIntakeData({haunting, weather, tone, logic});
     try {
       const result = await generateFate(haunting, weather, tone, logic, language);
@@ -25,6 +27,7 @@ export default function App() {
       setStep("result");
     } catch (error) {
       console.error(error);
+      setError(error instanceof Error ? error.message : "An unknown error occurred.");
     } finally {
       setLoading(false);
     }
@@ -57,6 +60,15 @@ export default function App() {
 
   return (
     <>
+      {error && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-6 text-center">
+          <div className="bg-[#0f0500] border border-[#d4af37] p-8 rounded-lg max-w-md">
+            <h3 className="text-xl text-[#d4af37] mb-4">Error</h3>
+            <p className="text-white mb-6">{error}</p>
+            <button onClick={() => setError(null)} className="px-4 py-2 border border-[#d4af37] text-[#d4af37] rounded">Close</button>
+          </div>
+        </div>
+      )}
       {step === "landing" && <Landing onEnter={() => setStep("intake")} language={language} setLanguage={setLanguage} />}
       {step === "intake" && <Intake onGenerate={handleGenerate} language={language} />}
       {step === "result" && fate && <Result fate={fate} onRegenerate={() => handleGenerate(intakeData!.haunting, intakeData!.weather, intakeData!.tone, intakeData!.logic)} language={language} />}
