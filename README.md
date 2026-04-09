@@ -1,6 +1,3 @@
-<div align="center">
-  <img width="100%" alt="A Room in Macondo" src="./images/macondo.png" />
-</div>
 
 <br />
 
@@ -55,6 +52,11 @@ These answers become the mood ingredients the AI uses to generate your personal 
 ## ❧ Screenshots
 
 <div align="center">
+
+### Landing Page
+
+<img width="800" src="./images/macondo.png" alt="Landing page" />
+<br/>
 
 
 
