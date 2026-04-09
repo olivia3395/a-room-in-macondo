@@ -56,10 +56,7 @@ These answers become the mood ingredients the AI uses to generate your personal 
 
 <div align="center">
 
-### Landing Page
-<img width="800" src="./images/macondo.png" alt="Landing page" />
 
-<br/>
 
 ### The Ritual
 <img width="800" src="./images/page1.png" alt="The ritual prompts" />
